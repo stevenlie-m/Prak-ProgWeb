@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<!-- @author 2073015-Steven Lie Maukar
+@version 6 Maret 2025
+-->
+
+<html>
+<head>
+    <title>2073015</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 400px;
+            border: 1px solid black;
+        }
+        .header {
+            background-color: #808080;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            padding: 5px;
+        }
+        .content {
+            padding: 10px;
+        }
+        .hobbies {
+            border: 1px solid black;
+            padding: 5px;
+            margin-top: 10px;
+        }
+        .submit-container {
+            text-align: right;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">Personal Data</div>
+        <div class="content">
+            <form action="proses.html" method="post">
+                Nama: <input type="text" name="nama"><br><br>
+                Alamat: <textarea name="alamat" rows="3" cols="30"></textarea><br><br>
+                Jenis Kelamin:
+                <input id="lk" type="radio" name="gender" value="laki-laki">
+                <label for="lk">laki-laki</label>
+                <input id="pr" type="radio" name="gender" value="perempuan">
+                <label for="pr">perempuan</label><br><br>
+                Tanggal Lahir:
+                <select name="tanggal">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>...</option>
+                </select>
+                -
+                <select name="bulan">
+                    <option>Januari</option>
+                    <option>Februari</option>
+                    <option>Maret</option>
+                    <option>...</option>
+                </select>
+                -
+                <select name="tahun">
+                    <option>1980</option>
+                    <option>1981</option>
+                    <option>1982</option>
+                    <option>...</option>
+                </select><br><br>
+                Jurusan:
+                <select name="jurusan" multiple="multiple" size="3">
+                    <option>teknik informatika</option>
+                    <option>sistem informasi</option>
+                    <option>elektro</option>
+                    <option>sipil</option>
+                </select><br><br>
+                <div class="hobbies">
+                    Hobi:<br>
+                    <input type="checkbox" name="hobi" value="Membaca"> Membaca
+                    <input type="checkbox" name="hobi" value="Voli"> Voli<br>
+                    <input type="checkbox" name="hobi" value="Menulis"> Menulis
+                    <input type="checkbox" name="hobi" value="Badminton"> Badminton<br>
+                    <input type="checkbox" name="hobi" value="Catur"> Catur
+                    <input type="checkbox" name="hobi" value="Golf"> Golf
+                </div>
+                <div class="submit-container">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

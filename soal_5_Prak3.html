@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<!-- @author 2073015-Steven Lie Maukar
+@version 6 Maret 2025
+-->
+
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2073015</title>
+    <script>
+        function showMore() {
+            document.getElementById("textFrame").src = "fulltext.html";
+        }
+        function showLess() {
+            document.getElementById("textFrame").src = "shorttext.html";
+        }
+    </script>
+</head>
+<body>
+    <iframe id="textFrame" src="shorttext.html" width="500" height="100" scrolling="no" frameborder="1"></iframe>
+    <br>
+    <button onclick="showMore()">more..</button>
+    <button onclick="showLess()">back..</button>
+</body>
+</html>
