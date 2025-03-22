@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7_2073015</title>
+    <style>
+        .container {
+            margin: auto;
+        }
+        .header {
+            display: flex;
+            background-color: #ffcb2f;
+            padding: 0px;
+        }
+        .header-logo {
+            width: 120px;
+            text-align: center;
+        }
+        .header-text {
+            width: 340px;
+            text-align: center;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .header-lion {
+            width: 160px;
+            text-align: center;
+        }
+        .header img {
+            width: 100%;
+            height: 100%;
+            padding: 0px;
+        }
+        .main-content {
+            display: flex;
+        }
+        .sidebar {
+            width: 120px;
+            text-align: center;
+            padding: 0px;
+        }
+        .sidebar img {
+            scale: 100%;
+            height: 100%;
+        }
+        .content {
+            flex-grow: 1;
+            padding: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: flex-start;
+        }
+        .content-text {
+            flex: 1 1 300px;
+            color: #0f6b68;
+        }
+
+        /* Elephant Section */
+        .elephant-box {
+            width: 200px;
+            text-align: center;
+        }
+        .elephant-box img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+        }
+        .elephant-caption {
+            font-size: 12px;
+            color: black;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+            border-top: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <div class="header">
+        <div class="header-logo">
+            <img src="logo_zoo.png" alt="Zoo Logo">
+        </div>
+        <div class="header-text">
+            Having trouble putting your little gorilla to bed?
+        </div>
+        <div class="header-lion">
+            <img src="lion.png" alt="Lion">
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <img src="bg_fish.png" alt="Fish Background">
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <div class="content-text">
+                <strong>The Truth about Elephants</strong>
+                <p>
+                    It's hard to tell what goes through a baby elephant's mind when its mom is trying to put it to sleep.
+                    Do you think baby elephants wake up in the middle of the night and cry? Do their moms and dads take turns
+                    getting up with them to rock them back to sleep? How do you rock an elephant, anyway?
+                </p>
+                <p>
+                    And what about gorillas? Today in the paper there's a story about a new gorilla that was just born in Franklin Park.
+                    Its mom is holding on to it just like any proud human mom. And I have to wonder if they go through as much trauma
+                    as that human mom when it comes to sleep, and food, and diapers, and running into the street.
+                </p>
+            </div>
+            <div class="elephant-box">
+                <img src="elephant.png" alt="Elephant">
+                <p class="elephant-caption">
+                    A baby elephant hanging out<br>with its mom, aunts, great-aunts,<br>and maybe even its grandmother
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        Footer
+    </div>
+</div>
+
+</body>
+</html>
