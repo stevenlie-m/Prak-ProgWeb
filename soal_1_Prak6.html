@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<!-- @author 2073015-Steven Lie Maukar
+21 maret 2025
+-->
+
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1_2073015</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin-top: 10px;
+        }
+        td, th {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <label>Angka Pertama: <input type="text" id="num1"></label><br>
+    <label>Angka Kedua: <input type="text" id="num2"></label><br>
+    <button onclick="hitung()">Count</button>
+
+    <table>
+        <tr>
+            <td id="num1Display"></td>
+            <td>+</td>
+            <td id="num2Display"></td>
+            <td>=</td>
+            <td id="sumResult"></td>
+        </tr>
+        <tr>
+            <td id="num1Display2"></td>
+            <td>-</td>
+            <td id="num2Display2"></td>
+            <td>=</td>
+            <td id="subResult"></td>
+        </tr>
+    </table>
+
+    <script>
+        function hitung() {
+            let num1 = document.getElementById("num1").value;
+            let num2 = document.getElementById("num2").value;
+            
+            if (isNaN(num1) && isNaN(num2)) {
+                alert("Angka pertama dan kedua harus angka.");
+                return;
+            } else if (isNaN(num1)) {
+                alert("Angka pertama bukan angka.");
+                return;
+            } else if (isNaN(num2)) {
+                alert("Angka kedua harus angka.");
+                return;
+            }
+            
+            let angka1 = parseFloat(num1);
+            let angka2 = parseFloat(num2);
+            let sum = angka1 + angka2;
+            let sub = angka1 - angka2;
+            
+            document.getElementById("num1Display").innerHTML = angka1;
+            document.getElementById("num2Display").innerHTML = angka2;
+            document.getElementById("sumResult").innerHTML = sum;
+            document.getElementById("num1Display2").innerHTML = angka1;
+            document.getElementById("num2Display2").innerHTML = angka2;
+            document.getElementById("subResult").innerHTML = sub;
+        }
+    </script>
+</body>
+</html>

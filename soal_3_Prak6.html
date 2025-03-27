@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<!-- @author 2073015-Steven Lie Maukar
+21 maret 2025
+-->
+
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3_2073015</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin: auto;
+            width: 800px;
+            height: 600px;
+        }
+        td {
+            width: 40px;
+            height: 40px;
+            background-color: orange;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <label>Tinggi Piramida: <input type="number" id="tinggi"></label>
+    <button onclick="buatPiramida()">Proses</button>
+    <div id="output"></div>
+
+    <script>
+        function buatPiramida() {
+            let tinggi = document.getElementById("tinggi").value;
+            let output = document.getElementById("output");
+            output.innerHTML = "";
+
+            if (isNaN(tinggi) || tinggi < 1) {
+                alert("Masukkan angka yang valid!");
+                return;
+            }
+
+            let tableHTML = "<table>";
+            for (let i = 1; i <= tinggi; i++) {
+                tableHTML += "<tr>";
+                let space = tinggi - i;
+                for (let j = 0; j < space; j++) {
+                    tableHTML += "<td style='background:none; border:none;'></td>";
+                }
+                for (let j = 0; j < i * 2 - 1; j++) {
+                    tableHTML += "<td></td>";
+                }
+                tableHTML += "</tr>";
+            }
+            tableHTML += "</table>";
+            output.innerHTML = tableHTML;
+        }
+    </script>
+</body>
+</html>

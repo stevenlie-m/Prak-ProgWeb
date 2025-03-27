@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<!-- @author 2073015-Steven Lie Maukar
+21 maret 2025
+-->
+
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2_2073015</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 30%;
+            margin-top: 10px;
+        }
+        td, th {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let angka;
+        do {
+            angka = prompt("Masukkan angka untuk tabel perkalian:");
+        } while (isNaN(angka) || angka === "" || angka === null);
+        
+        angka = parseInt(angka);
+        let tableHTML = "<table>";
+        for (let i = 1; i <= angka; i++) {
+            tableHTML += `<tr>
+                            <td>${i}</td>
+                            <td>x</td>
+                            <td>${angka}</td>
+                            <td>=</td>
+                            <td>${i * angka}</td>
+                          </tr>`;
+        }
+        tableHTML += "</table>";
+        
+        document.body.innerHTML += tableHTML;
+    </script>
+</body>
+</html>

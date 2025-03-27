@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<!-- @author 2073015-Steven Lie Maukar
+21 maret 2025
+-->
+
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4_2073015</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 300px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid black;
+            text-align: center;
+        }
+        input, select, button {
+            margin: 5px;
+            padding: 5px;
+            width: 90%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <label>Input :</label>
+        <input type="text" id="inputBilangan">
+        <br>
+        <label>Output :</label>
+        <input type="text" id="outputBilangan" readonly>
+        <br>
+        <select id="konversi">
+            <option value="biner-decimal">Biner ke Desimal</option>
+            <option value="decimal-biner">Desimal ke Biner</option>
+        </select>
+        <br>
+        <button onclick="prosesKonversi()">PROSES</button>
+        <button onclick="resetForm()">RESET</button>
+    </div>
+
+    <script>
+        function prosesKonversi() {
+            let input = document.getElementById("inputBilangan").value;
+            let pilihan = document.getElementById("konversi").value;
+            let output = "";
+            
+            if (pilihan === "biner-decimal") {
+                if (!/^[01]{8}$/.test(input)) {
+                    alert("Masukkan angka biner 8 digit (hanya 0 atau 1)");
+                    return;
+                }
+                output = binerKeDesimal(input);
+            } else {
+                if (isNaN(input) || input < 0 || input > 255) {
+                    alert("Masukkan angka desimal antara 0 - 255");
+                    return;
+                }
+                output = desimalKeBiner(parseInt(input));
+            }
+            
+            document.getElementById("outputBilangan").value = output;
+        }
+        
+        function binerKeDesimal(biner) {
+            let desimal = 0;
+            for (let i = 0; i < 8; i++) {
+                desimal += parseInt(biner[i]) * Math.pow(2, 7 - i);
+            }
+            return desimal;
+        }
+        
+        function desimalKeBiner(desimal) {
+            let biner = "";
+            for (let i = 7; i >= 0; i--) {
+                let bit = Math.floor(desimal / Math.pow(2, i));
+                desimal %= Math.pow(2, i);
+                biner += bit;
+            }
+            return biner;
+        }
+        
+        function resetForm() {
+            document.getElementById("inputBilangan").value = "";
+            document.getElementById("outputBilangan").value = "";
+        }
+    </script>
+</body>
+</html>
