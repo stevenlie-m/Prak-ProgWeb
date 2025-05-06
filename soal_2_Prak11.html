@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>2073015 Steven Lie</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 50%;
+      text-align: left;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #dce3cc;
+    }
+
+    .row1 {
+      background-color: #ADD8E6;
+    }
+
+    .row2 {
+      background-color: #FEC8B1;
+    }
+
+    .row3 {
+      background-color: #ADD8E6;
+    }
+
+    .row4 {
+      background-color: #FEC8B1;
+    }
+
+    .row5 {
+      background-color: #ADD8E6;
+    }
+
+    .highlight {
+      background-color: #CCFFAA !important;
+    }
+  </style>
+</head>
+<body>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Position</th>
+        <th>Programming Language</th>
+        <th>Ratings</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="row1" onmouseover="highlight(this)" onmouseout="restore(this, 'row1')">
+        <td>1</td><td>C</td><td>18.058%</td>
+      </tr>
+      <tr class="row2" onmouseover="highlight(this)" onmouseout="restore(this, 'row2')">
+        <td>2</td><td>Java</td><td>18.051%</td>
+      </tr>
+      <tr class="row3" onmouseover="highlight(this)" onmouseout="restore(this, 'row3')">
+        <td>3</td><td>C++</td><td>9.707%</td>
+      </tr>
+      <tr class="row4" onmouseover="highlight(this)" onmouseout="restore(this, 'row4')">
+        <td>4</td><td>PHP</td><td>9.662%</td>
+      </tr>
+      <tr class="row5" onmouseover="highlight(this)" onmouseout="restore(this, 'row5')">
+        <td>5</td><td>(Visual) Basic</td><td>6.392%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    function highlight(row) {
+      row.classList.add("highlight");
+    }
+
+    function restore(row, originalClass) {
+      row.className = originalClass;
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>2073015 Steven Lie</title>
+  <style>
+    input, select, button {
+      margin: 4px;
+    }
+    table {
+      font-family: monospace;
+      border: 1px solid black;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <table>
+    <tr>
+      <td>Data</td>
+      <td><input type="number" id="dataInput"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <button onclick="addData()">Add</button>
+        <select id="operation" onchange="doOperation()">
+          <option value="">Pilih Operasi</option>
+          <option value="display">Display</option>
+          <option value="count">Count</option>
+          <option value="sum">Sum</option>
+          <option value="average">Average</option>
+          <option value="max">Max</option>
+          <option value="min">Min</option>
+          <option value="odd">Ganjil</option>
+          <option value="even">Genap</option>
+          <option value="clear">Hapus</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Hasil</td>
+      <td><input type="text" id="hasil" readonly></td>
+    </tr>
+  </table>
+
+  <script>
+    let dataArray = [];
+
+    function addData() {
+      const input = document.getElementById("dataInput");
+      const value = parseInt(input.value);
+
+      if (!isNaN(value)) {
+        dataArray.push(value);
+        input.value = "";
+        input.focus();
+      }
+    }
+
+    function doOperation() {
+      const op = document.getElementById("operation").value;
+      let result = "";
+
+      if (op === "display") {
+        result = dataArray.join(", ");
+      } else if (op === "count") {
+        result = dataArray.length;
+      } else if (op === "sum") {
+        result = dataArray.reduce((a, b) => a + b, 0);
+      } else if (op === "average") {
+        if (dataArray.length > 0)
+          result = (dataArray.reduce((a, b) => a + b, 0) / dataArray.length).toFixed(2);
+        else
+          result = 0;
+      } else if (op === "max") {
+        result = Math.max(...dataArray);
+      } else if (op === "min") {
+        result = Math.min(...dataArray);
+      } else if (op === "odd") {
+        result = dataArray.filter(n => n % 2 !== 0).join(", ");
+      } else if (op === "even") {
+        result = dataArray.filter(n => n % 2 === 0).join(", ");
+      } else if (op === "clear") {
+        dataArray = [];
+        result = "Array dikosongkan.";
+      }
+
+      document.getElementById("hasil").value = result;
+    }
+  </script>
+
+</body>
+</html>
