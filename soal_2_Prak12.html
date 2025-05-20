@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>2073015 StevenLie</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+  .container {
+    margin: 20px;
+    border: 1px solid #ccc;
+    padding: 20px;
+  }
+  .field {
+    border: 1px solid #ccc;
+    padding: 8px;
+    margin-bottom: 5px;
+    background-color: #f9f9f9;
+  }
+  .field label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .result-container {
+    margin-top: 20px;
+    border: 1px solid #eee;
+    padding: 15px;
+    background-color: #fdfdfd;
+  }
+  .item-box {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+  }
+  .item-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  a {
+    text-decoration: underline;
+    color: blue;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="field">
+    <label>Title</label>
+    <div id="displayTitle"></div>
+  </div>
+  <div class="field">
+    <label>Content</label>
+    <div id="displayContent"></div>
+  </div>
+  <div class="field">
+    <label>Generator</label>
+    <div id="displayGenerator"></div>
+  </div>
+
+  <button onclick="displayJsonData()">Look</button>
+
+  <div id="jsonDataOutput" class="result-container" style="display:none;"></div>
+</div>
+
+<script>
+  function displayJsonData() {
+    const data = {
+        "title": "Portal S1-Sistem Informasi",
+        "link": "http://si.itmaranatha.org",
+        "generator": "S1-SI FIT UKM",
+        "items": [
+            {
+                "title": "BIE02 - Pemrograman Web",
+                "link": "https://morning.maranatha.edu/course/view.php?id=4245",
+                "universitas": {"m":"http://www.itmaranatha.org/"},
+                "description": "Matakuliah ini akan mengenalkan dan mengajarkan mahasiswa tentang dasar-dasar dalam pemrograman web. Di sini mahasiswa akan mempelajari penulisan tag-tag HTML sebagai pembentuk dasar dari suatu halaman web, mahasiswa juga akan mempelajari CSS sebagai pelengkap fungsionalitas dari HTML.<br/>Selain itu mahasiswa juga akan mempelajari pemrograman web di sisi klien (client side scripting) dengan menggunakan Java Script. Dan sebagai pengenalan teknologi baru, mahasiswa juga akan mempelajari sekilas mengenai teknologi JQuery dan teknologi JSON.",
+                "published": "01-January-2023",
+                "author": "Dosen S1-SI",
+                "tags": "S1-Sistem Informasi, Pemrograman Web"
+            },
+            {
+                "title": "IS407 - Basis Data 2",
+                "link": "http://si.itmaranatha.org/index.php/is407-basis-data-2",
+                "universitas": {"m":"http://www.itmaranatha.org/"},
+                "description": "Mata kuliah ini mengajarkan kepada mahasiswa bahasa pemrograman SQL yang meliputi : Perintah SQL untuk mengambil data dari tabel dan mengurutkan data, fungsi-fungsi yang terdapat pada oracle seperti fungsi tanggal dll, Join table, Operasi DDL, DML, Constraint, Subquery, View, Index dan PL/SQL.",
+                "published": "01-January-2023",
+                "author": "Dosen S1-SI",
+                "tags": "S1-Sistem Informasi, Basis Data 2"
+            }
+        ]
+    };
+
+    document.getElementById('displayTitle').innerHTML = '<a href="' + data.link + '">' + data.title + '</a>';
+    document.getElementById('displayGenerator').innerText = data.generator;
+
+    const contentDiv = document.getElementById('displayContent');
+    contentDiv.innerHTML = ''; 
+
+    data.items.forEach(item => {
+      const itemBox = document.createElement('div');
+      itemBox.classList.add('item-box');
+
+      const title = document.createElement('div');
+      title.classList.add('item-title');
+      title.innerHTML = '<a href="' + item.link + '">' + item.title + '</a>';
+      itemBox.appendChild(title);
+
+      const description = document.createElement('p');
+      description.innerHTML = item.description; 
+      itemBox.appendChild(description);
+
+      const published = document.createElement('p');
+      published.innerText = 'Published: ' + item.published;
+      itemBox.appendChild(published);
+
+      const author = document.createElement('p');
+      author.innerText = 'Author: ' + item.author;
+      itemBox.appendChild(author);
+
+      const tags = document.createElement('p');
+      tags.innerText = 'Tags: ' + item.tags;
+      itemBox.appendChild(tags);
+
+      if (item.universitas && item.universitas.m) {
+        const universitasLink = document.createElement('p');
+        universitasLink.innerHTML = 'Universitas: <a href="' + item.universitas.m + '">' + item.universitas.m + '</a>';
+        itemBox.appendChild(universitasLink);
+      }
+
+      contentDiv.appendChild(itemBox);
+    });
+
+    document.getElementById('jsonDataOutput').style.display = 'block'; 
+  }
+</script>
+
+</body>
+</html>

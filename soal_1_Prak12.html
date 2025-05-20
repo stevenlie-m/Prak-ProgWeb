@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2073015 StevenLie</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: "Inter", sans-serif; 
+            background-color: #f0f2f5; 
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; 
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px; 
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); 
+            width: 100%;
+            max-width: 900px; 
+        }
+        .radio-group {
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            margin-bottom: 25px;
+        }
+        .radio-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            color: #333;
+        }
+        .radio-group input[type="radio"] {
+            margin-right: 8px;
+            transform: scale(1.2); 
+        }
+        .search-button {
+            background-color: #007bff; 
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2); 
+        }
+        .search-button:hover {
+            background-color: #0056b3; 
+            transform: translateY(-2px); 
+        }
+        table {
+            width: 100%;
+            border-collapse: separate; 
+            margin-top: 30px;
+            border-radius: 8px;
+            overflow: hidden; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        th {
+            background-color: #343a40; 
+            color: white;
+            font-weight: bold;
+        }
+        tbody tr:nth-child(odd) {
+            background-color: #f2f2f2; 
+        }
+        tbody tr:nth-child(even) {
+            background-color: #ffffff; 
+        }
+        tbody tr:hover {
+            background-color: #e9ecef; 
+            cursor: pointer;
+        }
+        th:first-child {
+            border-top-left-radius: 8px;
+        }
+        th:last-child {
+            border-top-right-radius: 8px;
+        }
+        tbody tr:last-child td:first-child {
+            border-bottom-left-radius: 8px;
+        }
+        tbody tr:last-child td:last-child {
+            border-bottom-right-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">Daftar Mahasiswa Pemrograman Web 2023/2024</h1>
+
+    <div class="radio-group">
+        <label>Pilih Kelas:</label>
+        <div>
+            <input type="radio" id="all" name="kelas" value="nilai.js" checked>
+            <label for="all" class="inline-block mr-4">Semua Mahasiswa</label>
+        </div>
+        <div>
+            <input type="radio" id="kelasA" name="kelas" value="nilaiA.js">
+            <label for="kelasA" class="inline-block mr-4">Kelas A</label>
+        </div>
+        <div>
+            <input type="radio" id="kelasB" name="kelas" value="nilaiB.js">
+            <label for="kelasB" class="inline-block">Kelas B</label>
+        </div>
+    </div>
+
+    <button id="searchButton" class="search-button">Search</button>
+
+    <div id="studentTableContainer" class="mt-8">
+        <table id="studentTable">
+            <thead>
+                <tr>
+                    <th>NRP</th>
+                    <th>NAMA</th>
+                    <th>KELAS</th>
+                    <th>NILAI AKHIR</th>
+                </tr>
+            </thead>
+            <tbody>
+                </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#searchButton').on('click', function() {
+            // Mendapatkan nilai radio button yang dipilih
+            const selectedFile = $(":radio[name='kelas']:checked").val();
+
+            // Menggunakan $.getJSON untuk membaca file JSON
+            $.getJSON(selectedFile, function(data) {
+                const studentList = data.nilai; 
+                const tableBody = $('#studentTable tbody');
+                tableBody.empty(); 
+
+                studentList.forEach(function(student) {
+                    const row = `
+                        <tr>
+                            <td>${student.nrp}</td>
+                            <td>${student.nama}</td>
+                            <td>${student.kelas}</td>
+                            <td>${student.nilaiakhir}</td>
+                        </tr>
+                    `;
+                    tableBody.append(row);
+                });
+            })
+            .fail(function(jqxhr, textStatus, error) {
+                console.error("Request Failed: " + textStatus + ", " + error);
+                const tableBody = $('#studentTable tbody');
+                tableBody.empty();
+                tableBody.append('<tr><td colspan="4" class="text-center text-red-500">Gagal memuat data. Periksa file JSON.</td></tr>');
+            });
+        });
+
+        $('#searchButton').click();
+    });
+</script>
+
+</body>
+</html>
